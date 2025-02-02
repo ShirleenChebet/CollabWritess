@@ -11,14 +11,17 @@ class Book(db.Model):
     chapters = db.relationship('Chapter', backref='book', lazy=True)
 
 class Chapter(db.Model):
+    __tablename__ = 'chapter'
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.Text, nullable=False)
-    votes = db.Column(db.Integer, default=0)
-    recommended = db.Column(db.Boolean, default=False)
+    content = db.Column(db.String, nullable=False)
     book_id = db.Column(db.Integer, db.ForeignKey('book.id'), nullable=False)
+    votes = db.Column(db.Integer, default=0)
+
+    # Add relationship with cascading delete for votes
+    votes_rel = db.relationship('Vote', backref='chapter', cascade='all, delete-orphan')
 
 class Vote(db.Model):
+    __tablename__ = 'vote'
     id = db.Column(db.Integer, primary_key=True)
-    vote_type = db.Column(db.String(10))  # 'up' or 'down'
+    vote_type = db.Column(db.String, nullable=False)
     chapter_id = db.Column(db.Integer, db.ForeignKey('chapter.id'), nullable=False)
-    chapter = db.relationship('Chapter', backref='votes')
