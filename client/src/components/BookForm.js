@@ -13,11 +13,8 @@ const BookForm = ({ setBooks }) => {
     
     axios.post('http://localhost:5000/books', newBook)
       .then(response => {
-        setBooks(prevBooks => [...prevBooks, response.data]);
-        setTitle('');
-        setDescription('');
-        setGenre('');
-        setStatus('');
+        alert("Book added succesfully")
+        window.location.href="/";
       })
       .catch(error => console.error('Error adding book:', error));
   };

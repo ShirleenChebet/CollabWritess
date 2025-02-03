@@ -51,14 +51,30 @@ def get_book(id):
     book = Book.query.get_or_404(id)
     return book_schema.jsonify(book)
 
-# Add a new Chapter
 @app.route('/books/<int:book_id>/chapters', methods=['POST'])
 def add_chapter(book_id):
-    content = request.json['content']
-    new_chapter = Chapter(content=content, book_id=book_id)
+    data = request.get_json()
+    
+    if 'content' not in data:
+        return jsonify({'error': 'Content is required'}), 400
+    
+    new_chapter = Chapter(content=data['content'], book_id=book_id)
     db.session.add(new_chapter)
     db.session.commit()
+    
     return chapter_schema.jsonify(new_chapter), 201
+
+@app.route('/chapters/<int:chapter_id>', methods=['PUT'])
+def edit_chapter(chapter_id):
+    chapter = Chapter.query.get_or_404(chapter_id)
+    data = request.get_json()
+    
+    if 'content' in data:
+        chapter.content = data['content']
+
+    db.session.commit()
+    
+    return chapter_schema.jsonify(chapter)
 
 # Get all Chapters for a Book
 @app.route('/books/<int:book_id>/chapters', methods=['GET'])
