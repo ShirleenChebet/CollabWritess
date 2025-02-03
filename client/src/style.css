@@ -29,7 +29,7 @@ ul {
 }
 
 button {
-  background-color: #4CAF50;
+  background-color: #98FF98;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -42,7 +42,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #ff8787;
 }
 
 form {
@@ -62,7 +62,7 @@ input, textarea {
 }
 
 input:focus, textarea:focus {
-  border-color: #4CAF50;
+  border-color: #ff8787;
   outline: none;
 }
 
@@ -71,7 +71,7 @@ h3 {
 }
 
 nav {
-  background-color: #333;
+  background-color: #ff8787;
   padding: 15px;
 }
 

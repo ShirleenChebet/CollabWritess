@@ -50,4 +50,4 @@ const Chapters = () => {
     </div>
   );
 }
-export default Chapters
+export default Chapters 
