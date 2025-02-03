@@ -42,7 +42,6 @@ const Chapters = () => {
     <div>
       <h2>Chapters for {bookTitle}</h2>
       <ChapterForm bookId={bookId} />
-      {/* ✅ Ensure `onVote={handleVote}` is correctly passed */}
       <ChapterList 
         chapters={chapters} 
         onVote={handleVote} 
