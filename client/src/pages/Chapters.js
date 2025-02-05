@@ -9,24 +9,36 @@ const Chapters = () => {
   const [chapters, setChapters] = useState([]);
   const [bookTitle, setBookTitle] = useState('');
 
+  // Function to get the auth token from localStorage
+  const getAuthToken = () => localStorage.getItem('access_token');
+
+  // Axios instance with Authorization header
+  const axiosInstance = axios.create({
+    baseURL: 'http://127.0.0.1:5000/',
+    headers: {
+      Authorization: `Bearer ${getAuthToken()}`
+    }
+  });
+
   useEffect(() => {
-    axios.get(`http://127.0.0.1:5000/books/${bookId}`)
+    // Fetch book title and chapters with authentication header
+    axiosInstance.get(`books/${bookId}`)
       .then(response => setBookTitle(response.data.title))
       .catch(error => console.error('Error fetching book:', error));
 
-    axios.get(`http://127.0.0.1:5000/books/${bookId}/chapters`)
+    axiosInstance.get(`books/${bookId}/chapters`)
       .then(response => setChapters(response.data))
       .catch(error => console.error('Error fetching chapters:', error));
   }, [bookId]);
 
   const handleDelete = (chapterId) => {
-    axios.delete(`http://127.0.0.1:5000/chapters/${chapterId}`)
+    axiosInstance.delete(`chapters/${chapterId}`)
       .then(() => setChapters(chapters.filter(chapter => chapter.id !== chapterId)))
       .catch(error => console.error('Error deleting chapter:', error));
   };
 
   const handleVote = (chapterId, voteType) => {
-    axios.post(`http://127.0.0.1:5000/chapters/${chapterId}/vote`, { vote_type: voteType })
+    axiosInstance.post(`chapters/${chapterId}/vote`, { vote_type: voteType })
       .then(response => {
         setChapters(chapters.map(chapter =>
           chapter.id === chapterId
@@ -49,5 +61,6 @@ const Chapters = () => {
       />
     </div>
   );
-}
-export default Chapters 
+};
+
+export default Chapters;

@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import Chapters from './pages/Chapters';
 import Vote from './pages/Vote';
 import Navbar from './components/Navbar'
+import SignUp from './pages/SignUp';
+import Login from './pages/Login';
 import BookForms from './pages/BookForms'
 import "./style.css";
 const App = () => {
@@ -27,6 +29,8 @@ const App = () => {
     <Router>
       <Navbar />
       <Routes>
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home books={books} setBooks={setBooks} onBookSelect={handleBookSelect} />} />
         <Route path="/add" element = {<BookForms/>}/>
         <Route path="/books/:bookId/chapters" element={<Chapters />} />

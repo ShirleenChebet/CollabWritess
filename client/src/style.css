@@ -3,7 +3,11 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    background-image: url(../../../../../Downloads/aeeb42b0381c08475ac1c48c0237974b.jpg);  
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,7 +24,19 @@ body {
   }
 
 h2, h3 {
-  color: #333;
+  color: white;
+  font-size: 30px;
+}
+
+p {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+
+}
+
+h1 {
+  color: white;
 }
 
 ul {
@@ -70,9 +86,54 @@ h3 {
   color: #555;
 }
 
-nav {
-  background-color: #ff8787;
-  padding: 15px;
+.navbar {
+  background-color: #1e3a8a;
+  padding: 1rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-item:hover {
+  color: #93c5fd;
+}
+
+.login-button {
+  background-color: white;
+  color: #1e3a8a;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.login-button:hover {
+  background-color: #e2e8f0;
 }
 
 nav ul {
@@ -82,7 +143,7 @@ nav ul {
 
 nav li {
   display: inline;
-  margin: 0 15px;
+  margin: 0 ;
 }
 
 nav a {

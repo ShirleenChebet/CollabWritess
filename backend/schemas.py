@@ -1,5 +1,5 @@
 from flask_marshmallow import Marshmallow
-from models import Book, Chapter, Vote
+from models import Book, Chapter, Vote, User
 
 ma = Marshmallow()
 
@@ -17,3 +17,8 @@ class ChapterSchema(ma.SQLAlchemyAutoSchema):
 class VoteSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Vote
+
+# User Schema
+class UserSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = User
